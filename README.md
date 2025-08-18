@@ -1,6 +1,7 @@
-# ing-soft-3-tp1
+# ing-soft-3
 
-Readme del tp1 de ingeniería de software 3 de la UCC.
+Repositorio donde vamos a ir subiendo los trabajos prácticos realizados en la materia Ingeniería de Software 3.
 
-Alumno: Simón Barrale
+Universidad Católica de Córdoba
+Alumnos: Simón Barrale y Vicente Monzó
 Año 2025
