@@ -59,5 +59,10 @@ Al tener este docker-compose ya aseguramos que pueda ejecutarse en cualquier má
 
 Paso 7:
 
+Para etiquetar la versión simplemente tiro:
+docker tag simonbf15/app-ingesoft3:v1 simonbf15/app-ingesoft3:v1.1
+Tengo que poner así ya que ya habia creado antes con el tag v1, luego hago 
+docker push simonbf15/app-ingesoft3:v1.1 
+Y así queda subida la imagen a Docker Hub
 
 

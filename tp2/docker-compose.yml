@@ -29,7 +29,7 @@ services:
 
   # App en QA
   app_qa:
-    image: simonbf15/app-ingesoft3:v1
+    image: simonbf15/app-ingesoft3:v1.1
     container_name: app_qa
     environment:
       ENV: "QA"
@@ -45,7 +45,7 @@ services:
 
   # App en PROD
   app_prod:
-    image: simonbf15/app-ingesoft3:v1
+    image: simonbf15/app-ingesoft3:v1.1
     container_name: app_prod
     environment:
       ENV: "PROD"
