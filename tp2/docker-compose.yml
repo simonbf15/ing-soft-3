@@ -1,0 +1,64 @@
+version: "3.9"
+
+services:
+  # Base de datos para QA
+  db_qa:
+    image: postgres:15
+    container_name: db_qa
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: qa_db
+    volumes:
+      - db_qa_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432" # expongo en 5433 para no chocar con prod
+
+  # Base de datos para PROD
+  db_prod:
+    image: postgres:15
+    container_name: db_prod
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: prod_db
+    volumes:
+      - db_prod_data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432" # expongo en 5434 para diferenciar
+
+  # App en QA
+  app_qa:
+    image: simonbf15/app-ingesoft3:v1
+    container_name: app_qa
+    environment:
+      ENV: "QA"
+      DB_HOST: db_qa
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: qa_db
+    depends_on:
+      - db_qa
+    ports:
+      - "3001:3000"
+
+  # App en PROD
+  app_prod:
+    image: simonbf15/app-ingesoft3:v1
+    container_name: app_prod
+    environment:
+      ENV: "PROD"
+      DB_HOST: db_prod
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: prod_db
+    depends_on:
+      - db_prod
+    ports:
+      - "3002:3000"
+
+volumes:
+  db_qa_data:
+  db_prod_data:
